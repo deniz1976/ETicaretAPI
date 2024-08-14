@@ -17,8 +17,8 @@ builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
 
-builder.Services.AddStorage<LocalStorage>();
-//builder.Services.AddStorage<AzureStorage>();
+//builder.Services.AddStorage<LocalStorage>();
+builder.Services.AddStorage<AzureStorage>();
 //builder.Services.AddStorage();
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
@@ -49,11 +49,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseStaticFiles();
 app.UseCors();
